@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>gloabl component</title>
+  <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script type="text/javascript" src="../js/vue-2.5.16.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <briup-info v-bind:data='msg' v-on:close='closeHandler'></briup-info>
+    <briup-info data="操作有误！"></briup-info>
+  </div>
+  <script type="text/javascript">
+    //1. 注册组件
+    Vue.component('briup-info',{
+      template:`
+      <transition leave-active-class="animated fadeOutUpBig">
+        <div
+          v-show='isShow' 
+          style="background:orange;color:#fff;padding:.5em 1em; border-radius:5px; margin:.5em 0; position:relative">
+          <i class="fa fa-info-circle"></i>
+          <span>{{data}}</span>
+          <span><slot></slot></span>
+          <i @click='close' class="fa fa-close" style="position:absolute; right: 1em;cursor:pointer"></i>
+        </div>
+      </transition>
+      `,
+      data(){
+        return {
+          msg:'hello this is info',
+          isShow:true
+        }
+      },
+      props:['data'],
+      methods:{
+        close(){
+          // 子组件向父组件发射事件
+          this.$emit('close');
+           //关闭消息框
+          this.isShow = false;
+        }
+      },
+      created(){
+        console.log('info created');
+      }
+    });
+
+    new Vue({
+      el:'.container',
+      data:{
+        msg:'添加失败！'
+      },
+      methods:{
+        closeHandler(){
+          console.log('关闭了');
+        }
+      }
+    });
+  </script>
+</body>
+</html>

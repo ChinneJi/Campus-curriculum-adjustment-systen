@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>呼吸灯demo</title>
+	<style>
+		.container {
+			width: 230px;
+			height: 330px;
+			background-color: #343434;
+			margin: 0 auto;
+		}
+		.rec {
+			height: 230px;
+			box-sizing: border-box;/*边框盒子，外圆是被挤出的*/
+			padding: 34px;
+		}
+		.rec > .outer_circle {
+			box-sizing: border-box;
+			height: 100%;
+			border:6px solid #999;
+			border-radius: 50%;
+			padding: 10px;
+		}
+		.rec > .outer_circle > .inner_circle {
+			box-sizing: border-box;
+			height: 100%;
+			border:16px solid #fff;
+			border-radius: 50%;
+		}
+		.info {
+			color: #fff;
+			text-align: center;
+			padding: 1em 0;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- 正方形，呼吸灯的容器 -->
+		<div class="rec">
+			<div class="outer_circle">
+				<div class="inner_circle">
+					
+				</div>
+			</div>
+		</div>
+		<!-- 数据信息显示 -->
+		<div class="info">
+			HI
+		</div>
+	</div>
+</body>
+</html>
